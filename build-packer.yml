@@ -1,0 +1,12 @@
+---
+connection: local
+gather_facts: false
+hosts: localhost
+tasks:
+  include_tasks: shared/build-a-box.yml
+  with_items: "{{ boxes }}"
+vars:
+  boxes:
+    - proxmox-centos8
+    - proxmox-ubuntu20
+  versions: {}
