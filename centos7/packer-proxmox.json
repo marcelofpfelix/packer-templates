@@ -1,6 +1,18 @@
 {
-  "description": "Build CentOS 8 x86_64 Proxmox",
-  "sensitive-variables": ["proxmox_password", "ssh_password" ],
+  "variables": {
+    "proxmox_username": "",
+    "proxmox_password": "",
+    "proxmox_url": "",
+    "proxmox_node": "",
+    "proxmox_storage_pool": "local-lvm",
+    "proxmox_storage_pool_type": "lvm-thin",
+    "proxmox_storage_format": "raw",
+    "proxmox_iso_pool": "local:iso",
+    "centos_image": "CentOS-7-x86_64-Minimal-2003.iso",
+    "template_name": "CentOS7-Template",
+    "template_description": "CentOS 7 Template",
+    "version": ""
+  },
   "builders": [
     {
       "type": "proxmox",
@@ -33,7 +45,7 @@
       "boot_wait": "10s",
       "cores": "2",
       "memory": "2048",
-      "http_directory": "centos8",
+      "http_directory": "centos7",
       "ssh_username": "root",
       "ssh_password": "Packer",
       "ssh_port": 22,
