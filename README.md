@@ -1,28 +1,29 @@
 # packer-templates
+
 templates for packer
 
+* rhel 8 for proxmox VM 🚧
+* rhel 8 for vagrant@virtualbox box 🚧
+* debian 10  for proxmox VM 🚧
+* debian 10  for vagrant@virtualbox box 🚧
+* ubuntu 20.04 for proxmox VM 🚧
+* ubuntu 20.04 for vagrant@virtualbox box ✅
 
+## Requirements
 
+The following software must be available:
 
-##### resources
+  - [Packer](http://packer.io/)
+  - [Vagrant](http://vagrantup.com/)
+  - [VirtualBox](https://virtualbox.org/)
+  - [Ansible](https://ansible.com)
 
-* centos kickstart: https://docs.centos.org/en-US/centos/install-guide/Kickstart2/#sect-kickstart-examples
-* ubuntu preseeding https://help.ubuntu.com/lts/installation-guide/amd64/apb.html
+## Usage
 
-
-
+```console
+  # example for ubuntu 20.04 for vagrant@virtualbox
+felix@bandonga:~$ cd ubunutu20
+felix@bandonga:~$ packer build -var-file="variables.json" packer-virtualbox.json
+felix@bandonga:~$ vagrant up
+felix@bandonga:~$ vagrant ssh
 ```
-packer build \
-  -var proxmox_node=pve1 \
-  -var proxmox_username="root@pam" \
-  -var proxmox_password=password \
-  -var proxmox_url=https://192.168.0.1:8006/api2/json \
-  centos8/packer.proxmox.json
-```
-
-examples:
-
-* https://github.com/dustinrue/proxmox-packer
-* https://github.com/chriswayg/packer-proxmox-templates/
-* https://github.com/Aaron-K-T-Berry/packer-ubuntu-proxmox-template
-* https://github.com/geerlingguy/packer-boxes

@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    boxes:
+      - rhel8
+      - debian10
+      - ubuntu20
+    versions: {}
+  tasks:
+    - include_tasks: ansible/build-a-box.yml
+      with_items: "{{ boxes }}"

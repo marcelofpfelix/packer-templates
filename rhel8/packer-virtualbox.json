@@ -1,0 +1,52 @@
+  
+{
+    "variables": {
+      "version": "1"
+    },
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": ["ls /"]
+      }
+    ],
+    "builders": [
+      {
+        "type": "virtualbox-iso",
+        "boot_command": [
+          "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        ],
+        "boot_wait": "10s",
+        "disk_size": 81920,
+        "guest_os_type": "RedHat_64",
+        "headless": true,
+        "http_directory": "http",
+        "iso_urls": [
+          "/users/marcelo.felix/iso/rhel-8.3-x86_64-dvd.iso",
+          "https://developers.redhat.com/download-manager/file/rhel-8.3-x86_64-dvd.iso"
+        ],
+        "iso_checksum": "sha256:30fd8dff2d29a384bd97886fa826fa5be872213c81e853eae3f9d9674f720ad0",
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+        "ssh_port": 22,
+        "ssh_wait_timeout": "1800s",
+        "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
+        "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+        "virtualbox_version_file": ".vbox_version",
+        "vm_name": "packer-centos-8-x86_64",
+        "vboxmanage": [
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--memory",
+            "2048"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--cpus",
+            "1"
+          ]
+        ]
+      }
+    ]
+  }
