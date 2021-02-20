@@ -22,7 +22,7 @@ jobs:
           packer --version
       - name: Validate json
         run: |
-          find . -name "*.json" | while read filename
+          find . -name "packer-*.json" | while read filename
           do
             echo "$filename"; packer validate -syntax-only "$filename"
           done

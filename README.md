@@ -27,3 +27,9 @@ felix@bandonga:~$ packer build -var-file="variables.json" packer-virtualbox.json
 felix@bandonga:~$ vagrant up
 felix@bandonga:~$ vagrant ssh
 ```
+
+### References
+
+* https://github.com/dustinrue/proxmox-packer
+* https://github.com/geerlingguy/packer-boxes
+
